@@ -33,7 +33,7 @@ const SignIn = () => {
     <Container>
       <Grid className="mt-page">
         <Row>
-          <Col sx={24} md={12} mdOffset={6}>
+          <Col xs={24} md={12} mdOffset={6}>
             <Panel>
               <div className="text-center">
                 <h2>Welcome to Chat!</h2>
