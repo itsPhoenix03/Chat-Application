@@ -43,12 +43,12 @@ const SignIn = () => {
               <div className="mt-3">
                 <Button block color="blue" onClick={onFacebookSignIn}>
                   <Icon icon="facebook" />
-                  Login with Facebook
+                  Continue Login with Facebook
                 </Button>
 
                 <Button block color="green" onClick={onGoogleSignIn}>
                   <Icon icon="google" />
-                  Login with Google
+                  Continue Login with Google
                 </Button>
               </div>
             </Panel>
