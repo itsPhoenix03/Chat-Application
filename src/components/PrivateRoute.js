@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router';
 const PrivateRoute = ({ childern, ...routeProps }) => {
   const profile = false;
 
-  if (!profile) return <Redirect to="/siginin" />;
+  if (!profile) return <Redirect to="/signin" />;
 
   return <Route {...routeProps}>{childern}</Route>;
 };
