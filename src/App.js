@@ -9,17 +9,14 @@ import SignIn from './pages/SignIn';
 
 function App() {
   return (
-    <div>
-      <Switch>
-        <PublicRoute path="/signin">
-          <SignIn />
-        </PublicRoute>
-        <PrivateRoute path="/">
-          <Home />
-        </PrivateRoute>
-      </Switch>
-      Hello
-    </div>
+    <Switch>
+      <PublicRoute path="/signin">
+        <SignIn />
+      </PublicRoute>
+      <PrivateRoute path="/">
+        <Home />
+      </PrivateRoute>
+    </Switch>
   );
 }
 
