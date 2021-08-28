@@ -6,7 +6,7 @@ import { auth, database } from '../misc/firebase';
 const SignIn = () => {
   const signInProvider = async provider => {
     try {
-      const { additionalUserInfo, user } = auth.signInWithPopup(provider);
+      const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
 
       if (additionalUserInfo.isNewUser) {
         await database.ref(`/profiles/${user.uid}`).set({
