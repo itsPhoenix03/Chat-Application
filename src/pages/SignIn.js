@@ -16,8 +16,8 @@ const SignIn = () => {
       }
 
       Alert.success('You are now Signed In!', 5000);
-    } catch (error) {
-      Alert.error(error.massage, 5000);
+    } catch (err) {
+      Alert.error(err.massage, 5000);
     }
   };
 
