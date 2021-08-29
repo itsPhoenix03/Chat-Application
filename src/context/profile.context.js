@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, database } from '../misc/firebase';
 
 const ProfileContext = createContext();
@@ -12,12 +12,11 @@ export const ProfileProvider = ({ children }) => {
     const authUnsub = auth.onAuthStateChanged(authObj => {
       if (authObj) {
         userRef = database.ref(`/profiles/${authObj.uid}`);
-        userRef.on(snap => {
+        userRef.on('value', snap => {
           const { name, createdAt } = snap.val();
           const data = {
             name,
             createdAt,
-
             uid: authObj.uid,
             email: authObj.email,
           };
@@ -43,4 +42,4 @@ export const ProfileProvider = ({ children }) => {
   );
 };
 
-export const useProfile = () => ProfileProvider(ProfileContext);
+export const useProfile = () => useContext(ProfileContext);
