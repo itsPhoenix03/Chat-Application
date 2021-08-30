@@ -17,7 +17,7 @@ const SignIn = () => {
 
       Alert.success('You are now Signed In!', 5000);
     } catch (err) {
-      Alert.error(err.massage, 5000);
+      Alert.error(err.message, 5000);
     }
   };
 
@@ -42,13 +42,11 @@ const SignIn = () => {
 
               <div className="mt-3">
                 <Button block color="blue" onClick={onFacebookSignIn}>
-                  <Icon icon="facebook" />
-                  Continue Login with Facebook
+                  <Icon icon="facebook" /> Continue Login with Facebook
                 </Button>
 
                 <Button block color="green" onClick={onGoogleSignIn}>
-                  <Icon icon="google" />
-                  Continue Login with Google
+                  <Icon icon="google" /> Continue Login with Google
                 </Button>
               </div>
             </Panel>
