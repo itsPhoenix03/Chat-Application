@@ -4,6 +4,7 @@ import { Alert, Button, Modal } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import { useModelState } from '../../misc/custom-hooks';
 import { database, storage } from '../../misc/firebase';
+import { getUserUpdates } from '../../misc/helpers';
 import ProfileAvatar from '../ProfileAvatar';
 
 const fileInputTypes = '.png, .jpeg, .jpg';
@@ -62,16 +63,21 @@ const AvatarUploadBtn = () => {
       });
 
       const downloadUrl = await uploadAvatarRef.ref.getDownloadURL();
-      const userAvatarRef = database
-        .ref(`/profiles/${profile.uid}`)
-        .child('avatar');
-      await userAvatarRef.set(downloadUrl);
 
+      const update = await getUserUpdates(
+        profile.uid,
+        'avatar',
+        downloadUrl,
+        database
+      );
+      await database.ref().update(update);
+
+      close();
       setIsLoading(false);
       Alert.info('Avatar has been Uploaded', 4000);
     } catch (err) {
       setIsLoading(false);
-      Alert.error(err.message, 3000);
+      Alert.error(err.message, 4000);
     }
   };
 
