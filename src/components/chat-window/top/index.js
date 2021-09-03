@@ -9,6 +9,7 @@ import RoomInfoBtnModel from './RoomInfoBtnModel';
 const Top = () => {
   const isMobile = useMediaQuery(`(min-width: 992px)`);
   const name = useCurrentRoom(v => v.name);
+  const isAdmin = useCurrentRoom(v => v.isAdmin);
 
   return (
     <div>
@@ -29,7 +30,7 @@ const Top = () => {
         </h4>
 
         <ButtonToolbar className="ws-nowrap">
-          <EditRoomBtnDrawer />
+          {isAdmin && <EditRoomBtnDrawer />}
         </ButtonToolbar>
       </div>
 
