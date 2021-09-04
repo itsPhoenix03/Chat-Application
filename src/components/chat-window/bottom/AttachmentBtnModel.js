@@ -44,6 +44,7 @@ const AttachmentBtnModel = ({ afterUpload }) => {
       const files = await Promise.all(shapePromises);
 
       afterUpload(files);
+      close();
 
       setIsLoading(false);
     } catch (err) {
