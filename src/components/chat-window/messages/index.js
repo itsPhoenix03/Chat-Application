@@ -68,6 +68,38 @@ const Messages = () => {
     });
   }, []);
 
+  const handleDelete = useCallback(
+    async msgId => {
+      // eslint-disable-next-line no-alert
+      if (!window.confirm('Delete this Message?')) return;
+
+      const isLast = messages[messages.length - 1].id === msgId;
+
+      const update = {};
+
+      update[`/messages/${msgId}`] = null;
+
+      if (isLast && messages.length > 1) {
+        update[`/rooms/${chatId}/lastMessage`] = {
+          ...messages[messages.length - 2],
+          msgId: messages[messages.length - 2].id,
+        };
+      }
+
+      if (isLast && messages.length === 1) {
+        update[`rooms/${chatId}/lastMessage`] = null;
+      }
+
+      try {
+        await database.ref().update(update);
+        Alert.info('Message Deleted');
+      } catch (err) {
+        Alert.error(err.message);
+      }
+    },
+    [chatId, messages]
+  );
+
   return (
     <ul className="msg-list custom-scroll">
       {isChatEmpty && <li>No Messages Yet!!</li>}
@@ -78,6 +110,7 @@ const Messages = () => {
             message={msg}
             handleAdmin={handleAdmin}
             handleLike={handleLike}
+            handleDelete={handleDelete}
           />
         ))}
     </ul>
