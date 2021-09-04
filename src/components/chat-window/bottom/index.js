@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { Alert, Icon, Input, InputGroup } from 'rsuite';
 import { useProfile } from '../../../context/profile.context';
 import { database } from '../../../misc/firebase';
+import AttachmentBtnModel from './AttachmentBtnModel';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -65,9 +66,44 @@ const Bottom = () => {
     }
   };
 
+  const afterUpload = useCallback(
+    async files => {
+      setIsLoading(true);
+
+      const update = {};
+
+      files.forEach(file => {
+        const msgData = assembleMessage(profile, chatId);
+        msgData.file = file;
+
+        const messageId = database.ref(`messages`).push().key;
+
+        update[`/messages/${messageId}`] = msgData;
+      });
+
+      const lastMsgId = Object.keys(update).pop();
+
+      update[`/rooms/${chatId}/lastMessage`] = {
+        ...update[lastMsgId],
+        msgId: lastMsgId,
+      };
+
+      try {
+        await database.ref().update(update);
+
+        setIsLoading(false);
+      } catch (err) {
+        setIsLoading(false);
+        Alert.error(err.message);
+      }
+    },
+    [chatId, profile]
+  );
+
   return (
-    <div>
+    <>
       <InputGroup>
+        <AttachmentBtnModel afterUpload={afterUpload} />
         <Input
           placeholder="Write your message..."
           value={input}
@@ -84,7 +120,7 @@ const Bottom = () => {
           <Icon icon="send" />
         </InputGroup.Button>
       </InputGroup>
-    </div>
+    </>
   );
 };
 
