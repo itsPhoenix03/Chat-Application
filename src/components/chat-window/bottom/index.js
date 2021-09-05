@@ -5,6 +5,7 @@ import { Alert, Icon, Input, InputGroup } from 'rsuite';
 import { useProfile } from '../../../context/profile.context';
 import { database } from '../../../misc/firebase';
 import AttachmentBtnModel from './AttachmentBtnModel';
+import AudioMsgBtn from './AudioMsgBtn';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -104,6 +105,7 @@ const Bottom = () => {
     <>
       <InputGroup>
         <AttachmentBtnModel afterUpload={afterUpload} />
+        <AudioMsgBtn afterUpload={afterUpload} />
         <Input
           placeholder="Write your message..."
           value={input}
