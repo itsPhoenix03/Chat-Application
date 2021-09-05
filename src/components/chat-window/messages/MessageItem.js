@@ -19,6 +19,16 @@ const renderFileMessage = file => {
     );
   }
 
+  if (file.contentType.includes('audio')) {
+    return (
+      // eslint-disable-next-line jsx-a11y/media-has-caption
+      <audio controls>
+        <source src={file.url} type="audio/mp3" />
+        Your Browser Does Not Support The Audio Element!
+      </audio>
+    );
+  }
+
   return <a href={file.url}>Download: {file.name}</a>;
 };
 
@@ -80,7 +90,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           <IconBtnControl
             isVisible={canShowLikes}
             iconName="close"
-            onClick={() => handleDelete(message.id)}
+            onClick={() => handleDelete(message.id, file)}
             tooltip="Delete"
           />
         )}
