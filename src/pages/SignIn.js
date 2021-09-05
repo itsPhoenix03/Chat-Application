@@ -30,14 +30,18 @@ const SignIn = () => {
   };
 
   return (
-    <Container>
+    <Container className="bg-black-02">
       <Grid className="mt-page">
         <Row>
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
               <div className="text-center">
-                <h2>Welcome to Chat!</h2>
-                <p>Prograssive Chat Application for People</p>
+                <h2>Welcome to Connecting...!</h2>
+                <p className="mt-3 font-bolder">
+                  Prograssive Chat Application for People to Connect with Each
+                  Other...
+                  <br /> So.. are you Connecting?
+                </p>
               </div>
 
               <div className="mt-3">
