@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { database } from './firebase';
 
-export function useModelState(defalutValue = false) {
+export function useModalState(defalutValue = false) {
   const [isOpen, setIsOpen] = useState(defalutValue);
 
   const open = useCallback(() => setIsOpen(true), []);

@@ -2,14 +2,14 @@ import React, { memo } from 'react';
 import { useParams } from 'react-router';
 import { Alert, Button, Drawer } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
-import { useMediaQuery, useModelState } from '../../../misc/custom-hooks';
+import { useMediaQuery, useModalState } from '../../../misc/custom-hooks';
 import { database } from '../../../misc/firebase';
 import EditableInput from '../../EditableInput';
 
 const EditRoomBtnDrawer = () => {
   const { chatId } = useParams();
 
-  const { isOpen, open, close } = useModelState();
+  const { isOpen, open, close } = useModalState();
   const name = useCurrentRoom(v => v.name);
   const description = useCurrentRoom(v => v.description);
   const isMobile = useMediaQuery(`(max-width: 992px)`);

@@ -4,7 +4,7 @@ import { ButtonToolbar, Icon } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
 import EditRoomBtnDrawer from './EditRoomBtnDrawer';
-import RoomInfoBtnModel from './RoomInfoBtnModel';
+import RoomInfoBtnModal from './RoomInfoBtnModal';
 
 const Top = () => {
   const isMobile = useMediaQuery(`(min-width: 992px)`);
@@ -36,7 +36,7 @@ const Top = () => {
 
       <div className="d-flex justify-content-between align-items-center">
         <span>todo</span>
-        <RoomInfoBtnModel />
+        <RoomInfoBtnModal />
       </div>
     </div>
   );

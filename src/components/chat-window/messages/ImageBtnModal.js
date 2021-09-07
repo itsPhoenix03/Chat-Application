@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from 'rsuite';
-import { useModelState } from '../../../misc/custom-hooks';
+import { useModalState } from '../../../misc/custom-hooks';
 
 const ImageBtnModal = ({ src, fileName }) => {
-  const { isOpen, open, close } = useModelState();
+  const { isOpen, open, close } = useModalState();
 
   return (
     <>

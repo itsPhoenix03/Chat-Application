@@ -11,7 +11,7 @@ import {
   Schema,
 } from 'rsuite';
 import firebase from 'firebase/app';
-import { useModelState } from '../misc/custom-hooks';
+import { useModalState } from '../misc/custom-hooks';
 import { auth, database } from '../misc/firebase';
 
 const { StringType } = Schema.Types;
@@ -25,8 +25,8 @@ const INITIAL_FORM = {
   description: '',
 };
 
-const CreateRoomBtnModel = () => {
-  const { isOpen, open, close } = useModelState();
+const CreateRoomBtnModal = () => {
+  const { isOpen, open, close } = useModalState();
 
   const [formValue, setFormValue] = useState(INITIAL_FORM);
   const [isLoading, setIsLoading] = useState(false);
@@ -110,4 +110,4 @@ const CreateRoomBtnModel = () => {
   );
 };
 
-export default CreateRoomBtnModel;
+export default CreateRoomBtnModal;

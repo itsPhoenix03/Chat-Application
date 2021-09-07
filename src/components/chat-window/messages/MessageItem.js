@@ -8,7 +8,7 @@ import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
 import IconBtnControl from './IconBtnControl';
 import ImageBtnModal from './ImageBtnModal';
-import ProfileInfoBtnModel from './ProfileInfoBtnModel';
+import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
 const renderFileMessage = file => {
   if (file.contentType.includes('image')) {
@@ -60,7 +60,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           className="ml-1"
           size="xs"
         />
-        <ProfileInfoBtnModel
+        <ProfileInfoBtnModal
           profile={author}
           appearance="link"
           className="p-0 ml-1 text-black font-bolder link-unstyled"
@@ -72,7 +72,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
                 : `Make ${author.name} Admin`}
             </Button>
           )}
-        </ProfileInfoBtnModel>
+        </ProfileInfoBtnModal>
         <TimeAgo
           datetime={createdAt}
           className="font-normal text-black-45 ml-2"

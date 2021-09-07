@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Alert, Button, Icon, InputGroup, Modal, Uploader } from 'rsuite';
-import { useModelState } from '../../../misc/custom-hooks';
+import { useModalState } from '../../../misc/custom-hooks';
 import { storage } from '../../../misc/firebase';
 
 const MAX_FILE_SIZE = 1000 * 1024 * 3;
 
-const AttachmentBtnModel = ({ afterUpload }) => {
-  const { isOpen, open, close } = useModelState();
+const AttachmentBtnModal = ({ afterUpload }) => {
+  const { isOpen, open, close } = useModalState();
 
   const { chatId } = useParams();
   const [fileList, setFileList] = useState([]);
@@ -88,4 +88,4 @@ const AttachmentBtnModel = ({ afterUpload }) => {
   );
 };
 
-export default AttachmentBtnModel;
+export default AttachmentBtnModal;

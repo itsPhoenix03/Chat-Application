@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Modal } from 'rsuite';
-import { useModelState } from '../../../misc/custom-hooks';
+import { useModalState } from '../../../misc/custom-hooks';
 import ProfileAvatar from '../../ProfileAvatar';
 
-const ProfileInfoBtnModel = ({ profile, children, ...btnProps }) => {
-  const { isOpen, open, close } = useModelState();
+const ProfileInfoBtnModal = ({ profile, children, ...btnProps }) => {
+  const { isOpen, open, close } = useModalState();
 
   const shortName = profile.name.split(' ')[0];
   const { name, avatar, createdAt } = profile;
@@ -41,4 +41,4 @@ const ProfileInfoBtnModel = ({ profile, children, ...btnProps }) => {
   );
 };
 
-export default ProfileInfoBtnModel;
+export default ProfileInfoBtnModal;

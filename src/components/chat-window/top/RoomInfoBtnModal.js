@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { Button, Modal } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
-import { useModelState } from '../../../misc/custom-hooks';
+import { useModalState } from '../../../misc/custom-hooks';
 
-const RoomInfoBtnModel = () => {
-  const { isOpen, open, close } = useModelState();
+const RoomInfoBtnModal = () => {
+  const { isOpen, open, close } = useModalState();
   const description = useCurrentRoom(v => v.description);
   const name = useCurrentRoom(v => v.name);
 
@@ -31,4 +31,4 @@ const RoomInfoBtnModel = () => {
   );
 };
 
-export default memo(RoomInfoBtnModel);
+export default memo(RoomInfoBtnModal);

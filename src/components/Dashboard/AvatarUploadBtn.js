@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { Alert, Button, Modal } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
-import { useModelState } from '../../misc/custom-hooks';
+import { useModalState } from '../../misc/custom-hooks';
 import { database, storage } from '../../misc/firebase';
 import { getUserUpdates } from '../../misc/helpers';
 import ProfileAvatar from '../ProfileAvatar';
@@ -22,7 +22,7 @@ const getBlob = canvas => {
 };
 
 const AvatarUploadBtn = () => {
-  const { isOpen, open, close } = useModelState();
+  const { isOpen, open, close } = useModalState();
   const { profile } = useProfile();
 
   const [image, setImage] = useState(null);
